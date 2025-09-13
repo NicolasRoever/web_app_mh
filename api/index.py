@@ -2,12 +2,13 @@ import os
 from datetime import datetime, timezone
 from flask import Flask, request, jsonify, render_template, redirect, make_response
 from supabase import create_client, Client
+from typing import Optional
 
 # Load environment variables
 SUPABASE_URL = os.environ.get("SUPABASE_URL")
-SUPABASE_KEY = os.environ.get("SUPABASE_API_KEY") or os.environ.get("SUPABASE_SERVICE_ROLE_KEY")
+SUPABASE_KEY = os.environ.get("SUPABASE_API_KEY") 
 
-supabase: Client | None = None
+supabase: Optional[Client] = None
 if SUPABASE_URL and SUPABASE_KEY:
     supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
