@@ -6,15 +6,12 @@
 <title>Content</title>
 <link rel="manifest" href="/static/manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<style>
-body{font-family:system-ui,sans-serif;margin:0;background:#f9f9f9;display:flex;align-items:center;justify-content:center;height:100vh;}
-.card{max-width:400px;width:100%;padding:1rem;}
-</style>
+<link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
 <div class="card">
-<p>User: {{ user_id }}</p>
-<p>Welcome!</p>
+  <h1>Hello, {{ user_id }}</h1>
+  <p>Welcome!</p>
 </div>
 <script>
 const userId = localStorage.getItem('user_id');
