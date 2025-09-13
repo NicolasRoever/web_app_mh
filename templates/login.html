@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login</title>
+<link rel="manifest" href="/static/manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<style>
+body{font-family:system-ui,sans-serif;margin:0;background:#f9f9f9;display:flex;align-items:center;justify-content:center;height:100vh;}
+.card{max-width:400px;width:100%;padding:1rem;}
+input,button{width:100%;padding:0.75rem;font-size:1rem;margin-bottom:1rem;}
+</style>
+</head>
+<body>
+<div class="card">
+<form id="login-form">
+<input id="user_id" placeholder="Enter your ID" autocomplete="off" required>
+<button type="submit">Continue</button>
+</form>
+</div>
+<script>
+// Register service worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/static/service-worker.js');
+}
+document.getElementById('login-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const userId = document.getElementById('user_id').value.trim();
+  if (!userId) return;
+  localStorage.setItem('user_id', userId);
+  const res = await fetch('/api/login', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ user_id: userId })
+  });
+  if (res.ok) {
+    window.location.href = '/content';
+  }
+});
+</script>
+</body>
+</html>

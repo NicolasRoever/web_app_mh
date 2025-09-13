@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Content</title>
+<link rel="manifest" href="/static/manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<style>
+body{font-family:system-ui,sans-serif;margin:0;background:#f9f9f9;display:flex;align-items:center;justify-content:center;height:100vh;}
+.card{max-width:400px;width:100%;padding:1rem;}
+</style>
+</head>
+<body>
+<div class="card">
+<p>User: {{ user_id }}</p>
+<p>Welcome!</p>
+</div>
+<script>
+const userId = localStorage.getItem('user_id');
+if (!userId) {
+  window.location.href = '/';
+}
+let visitId = null;
+let startedAt = new Date().toISOString();
+// Start visit
+fetch('/api/visit-start', {
+  method: 'POST',
+  headers: {'Content-Type': 'application/json'},
+  body: JSON.stringify({ user_id: userId })
+}).then(r => r.json()).then(d => { visitId = d.visit_id; });
+
+function endVisit() {
+  if (!startedAt) return;
+  if (navigator.sendBeacon) {
+    const data = new FormData();
+    data.append('user_id', userId);
+    if (visitId) data.append('visit_id', visitId);
+    data.append('started_at', startedAt);
+    navigator.sendBeacon('/api/visit-end', data);
+  } else {
+    fetch('/api/visit-end', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ user_id: userId, visit_id: visitId, started_at: startedAt })
+    });
+  }
+}
+document.addEventListener('visibilitychange', () => { if (document.hidden) endVisit(); });
+window.addEventListener('pagehide', endVisit);
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/static/service-worker.js');
+}
+</script>
+</body>
+</html>
