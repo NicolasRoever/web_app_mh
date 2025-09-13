@@ -6,18 +6,16 @@
 <title>Login</title>
 <link rel="manifest" href="/static/manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<style>
-body{font-family:system-ui,sans-serif;margin:0;background:#f9f9f9;display:flex;align-items:center;justify-content:center;height:100vh;}
-.card{max-width:400px;width:100%;padding:1rem;}
-input,button{width:100%;padding:0.75rem;font-size:1rem;margin-bottom:1rem;}
-</style>
+<link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
 <div class="card">
-<form id="login-form">
-<input id="user_id" placeholder="Enter your ID" autocomplete="off" required>
-<button type="submit">Continue</button>
-</form>
+  <h1>Welcome</h1>
+  <p>Please enter your ID to continue.</p>
+  <form id="login-form">
+    <input id="user_id" placeholder="Enter your ID" autocomplete="off" required>
+    <button type="submit">Continue</button>
+  </form>
 </div>
 <script>
 // Register service worker
