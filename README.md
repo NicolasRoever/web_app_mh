@@ -12,6 +12,18 @@ pip install -r requirements.txt
 python api/index.py
 ```
 
+Vercel local testing
+```bash
+ npm i -g vercel
+vercel dev
+```
+
+
+## Stuff To Do
+
+- change to server side unix time measurements :)
+
+
 ## Supabase Setup
 
 Run the SQL schema in your project:

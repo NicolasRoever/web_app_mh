@@ -19,6 +19,13 @@ app = Flask(__name__, template_folder="../templates", static_folder="../static")
 def login_page():
     return render_template("login.html")
 
+@app.get("/onboarding.html")
+def onboarding_page():
+    user_id = request.cookies.get("user_id")
+    if not user_id:
+        return redirect("/")
+    return render_template("onboarding.html", user_id=user_id)
+
 @app.get("/content")
 def content_page():
     user_id = request.cookies.get("user_id")
