@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Installation of App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+</head>
+<body>
+  <div class="page">
+    <header>
+      <p style="color:#666;margin:.25rem 0 0">Here is how you add the app to your homescreen:</p>
+    </header>
+
+    <main>
+      <div class="card">
+        <div id="iosTip" class="tip hide">
+          <ol style="margin:0;padding-left:18px">
+            <li>Tap the <strong>Share</strong> button in your browser’s toolbar.</li>
+            <li>Choose <strong>Add to Home Screen</strong>.</li>
+          </ol>
+          <div style="margin-top:10px;font-size:14px;color:#666">
+            After you add it, open the new icon to continue the study.
+          </div>
+        </div>
+
+        <div class="row">
+          <button class="btn ghost" onclick="skip()">Skip for now</button>
+          <button class="btn primary" onclick="openApp()">Open app now</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Minimal iOS + standalone detection
+    const ua = navigator.userAgent || '';
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+    // If already installed/launched from icon, go straight to the app.
+    if (isStandalone) {
+      location.replace('/content.html');
+    } else {
+      // First-run hint only on iOS
+      if (isIOS) document.getElementById('iosTip').classList.remove('hide');
+    }
+
+    function openApp() {
+      // Continue whether or not user installed; your study runs either way.
+      location.href = '/content';
+    }
+    function skip() {
+      location.href = '/content';
+    }
+  </script>
+</body>
+</html>
