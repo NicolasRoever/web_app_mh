@@ -9,12 +9,22 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+  <figure class="shot">
+                  <picture>
+                    <img
+                      src="{{ url_for('static', filename='images/Upload_Step_1.jpeg') }}"
+                      alt="iOS Safari share button highlighted"
+                      loading="eager"
+                      decoding="async"
+                      class="shot-img"
+                    />
+                  </picture>
+                </figure>
 <div class="card">
   <h1>Welcome 😊</h1>
-  <img src="{{ url_for('static', filename='grandma_pc.png') }}" alt="Grandma at PC">
-  <p>Please enter your ID to continue.</p>
+  <p>Please enter your Prolific ID to continue.</p>
   <form id="login-form">
-    <input id="user_id" placeholder="Enter your ID" autocomplete="off" required>
+    <input id="user_id" placeholder="Enter your Prolific ID" autocomplete="off" required>
     <button type="submit">Continue</button>
   </form>
 </div>

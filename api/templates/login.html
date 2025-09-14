@@ -9,14 +9,25 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-<div class="card">
-  <h1>Welcome 😊</h1>
-  <p>Please enter your Prolific ID to continue.</p>
-  <form id="login-form">
-    <input id="user_id" placeholder="Enter your Prolific ID" autocomplete="off" required>
-    <button type="submit">Continue</button>
-  </form>
-</div>
+  <figure class="shot">
+    <picture>
+      <img
+        src="{{ url_for('static', filename='images/grandma_pc.png') }}"
+        alt="iOS Safari share button highlighted"
+        loading="eager"
+        decoding="async"
+        class="shot-img"
+      />
+    </picture>
+  </figure>
+  <div class="card">
+    <h1>Welcome 😊</h1>
+    <p>Please enter your Prolific ID to continue.</p>
+    <form id="login-form">
+      <input id="user_id" placeholder="Enter your Prolific ID" autocomplete="off" required>
+      <button type="submit">Continue</button>
+    </form>
+  </div>
 <script>
 // Register service worker
 if ('serviceWorker' in navigator) {
