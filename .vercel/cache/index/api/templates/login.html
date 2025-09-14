@@ -10,26 +10,28 @@
 
 </head>
 <body>
-  <figure class="shot card-figure"></figure>
-    <picture>
+<div class="login-wrapper">
+
+  <div class="card">
+      <h1>Welcome 😊</h1>
+    <figure class="card-figure">
       <img
         src="{{ url_for('static', filename='images/grandma_pc.png') }}"
         alt="iOS Safari share button highlighted"
         loading="eager"
         decoding="async"
-        class="card-figure"
+        class="shot-img"
       />
-    </picture>
-  </figure>
+    </figure>
 
-  <div class="card">
-    <h1>Welcome 😊</h1>
+    
     <p>Please enter your Prolific ID to continue.</p>
     <form id="login-form">
       <input id="user_id" placeholder="Enter your Prolific ID" autocomplete="off" required>
       <button type="submit">Continue</button>
     </form>
   </div>
+</div>
 <script>
 // Register service worker
 if ('serviceWorker' in navigator) {
@@ -52,3 +54,11 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
