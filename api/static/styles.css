@@ -1,8 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 :root {
   --bg-color: #e6f7ff;
   --bg-gradient-end: #fff5f7;
   --primary-color: #4a90e2;
   --primary-color-dark: #357abd;
+  --bg-color: #f8f9f4;
+  --bg-gradient-end: #f2efe9;
+  --primary-color: #006400;
+  --primary-color-dark: #004b23;
   --card-bg: #ffffff;
   --text-color: #333333;
   --muted-text: #666666;
@@ -13,6 +19,7 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin: 0;
   background: linear-gradient(
     135deg,
@@ -38,6 +45,8 @@ body {
   box-sizing: border-box;
   text-align: center;
   animation: fadeIn 0.4s ease;
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-color);
 }
 
 h1 {
@@ -71,6 +80,7 @@ input:focus {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3);
+  box-shadow: 0 0 0 3px rgba(0, 100, 0, 0.3);
 }
 
 button {
@@ -97,6 +107,58 @@ button:disabled {
 }
 
 /* Subtle fade-in for cards */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.site-header, .site-footer {
+  text-align: center;
+}
+
+.site-header {
+  margin-bottom: 2rem;
+}
+
+.site-footer {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: var(--muted-text);
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+.toc ol,
+.references {
+  padding-left: 1.25rem;
+}
+
+.checklist {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.tip {
+  font-style: italic;
+  color: var(--muted-text);
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 420px;
+  margin: 2rem auto;
+  padding: 2rem;
+  box-sizing: border-box;
+  text-align: center;
+  animation: fadeIn 0.4s ease;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -105,6 +167,41 @@ button:disabled {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Mobile optimizations */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.shot {
+  max-width: 80%;
+  margin: 0.5rem auto;
+  text-align: center;
+}
+
+.shot-img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.3rem;
+  }
+  .card {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+  input,
+  button {
+    font-size: 0.95rem;
+    padding: 0.8rem;
   }
 }
 
