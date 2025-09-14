@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login</title>
+<link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="card">
+  <h1>Welcome</h1>
+  <p>Please enter your ID to continue.</p>
+  <form id="login-form">
+    <input id="user_id" placeholder="Enter your ID" autocomplete="off" required>
+    <button type="submit">Continue</button>
+  </form>
+</div>
+<script>
+// Register service worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register("{{ url_for('static', filename='service-worker.js') }}");
+}
+document.getElementById('login-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const userId = document.getElementById('user_id').value.trim();
+  if (!userId) return;
+  localStorage.setItem('user_id', userId);
+  const res = await fetch('/api/login', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ user_id: userId })
+  });
+  if (res.ok) {
+    window.location.href = '/onboarding.html';
+  }
+});
+</script>
+</body>
+</html>
