@@ -1,3 +1,13 @@
+/* Add spacing between cards and list items for consistent layout */
+.card + .card {
+  margin-top: 2.5rem;
+}
+ul, ol {
+  padding-left: 1.5rem;
+}
+li {
+  margin-bottom: 1.2em;
+}
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 :root {
@@ -33,6 +43,7 @@ body {
   min-height: 100vh;
   padding: 1rem;
   box-sizing: border-box;
+  line-height: 1.7;
 }
 
 .card {
@@ -41,9 +52,9 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   width: 100%;
   max-width: 420px;
-  padding: 2rem;
+  padding: 3%;
   box-sizing: border-box;
-  text-align: center;
+  text-align: left;
   animation: fadeIn 0.4s ease;
 h1, h2, h3, h4, h5, h6 {
   color: var(--primary-color);
@@ -60,12 +71,14 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 1.6rem;
   margin: 0 0 1rem;
+  line-height: 1.4;
 }
 
 p {
   margin-bottom: 1rem;
   color: var(--muted-text);
   font-size: 1rem;
+  line-height: 1.8;
 }
 
 input,
@@ -82,6 +95,7 @@ button {
 
 input {
   background: #fff;
+  line-height: 1.6;
 }
 
 input:focus {
@@ -97,6 +111,7 @@ button {
   border: none;
   cursor: pointer;
   font-weight: 500;
+  line-height: 1.6;
 }
 
 button:hover {
