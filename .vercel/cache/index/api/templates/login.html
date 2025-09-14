@@ -7,27 +7,29 @@
 <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
 </head>
 <body>
-  <figure class="shot">
-                  <picture>
-                    <img
-                      src="{{ url_for('static', filename='images/Upload_Step_1.jpeg') }}"
-                      alt="iOS Safari share button highlighted"
-                      loading="eager"
-                      decoding="async"
-                      class="shot-img"
-                    />
-                  </picture>
-                </figure>
-<div class="card">
-  <h1>Welcome 😊</h1>
-  <p>Please enter your Prolific ID to continue.</p>
-  <form id="login-form">
-    <input id="user_id" placeholder="Enter your Prolific ID" autocomplete="off" required>
-    <button type="submit">Continue</button>
-  </form>
-</div>
+  <figure class="shot card-figure"></figure>
+    <picture>
+      <img
+        src="{{ url_for('static', filename='images/grandma_pc.png') }}"
+        alt="iOS Safari share button highlighted"
+        loading="eager"
+        decoding="async"
+        class="card-figure"
+      />
+    </picture>
+  </figure>
+
+  <div class="card">
+    <h1>Welcome 😊</h1>
+    <p>Please enter your Prolific ID to continue.</p>
+    <form id="login-form">
+      <input id="user_id" placeholder="Enter your Prolific ID" autocomplete="off" required>
+      <button type="submit">Continue</button>
+    </form>
+  </div>
 <script>
 // Register service worker
 if ('serviceWorker' in navigator) {
