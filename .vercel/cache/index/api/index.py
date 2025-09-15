@@ -17,6 +17,9 @@ app = Flask(__name__, template_folder="templates", static_folder="static")
 
 @app.get("/")
 def login_page():
+    user_id = request.cookies.get("user_id")
+    if user_id:
+        return redirect("/content.html")
     return render_template("login.html")
 
 @app.get("/onboarding.html")
@@ -50,7 +53,7 @@ def api_login():
         supabase.table("session_login").insert({"user_id": user_id}).execute()
 
     resp = make_response(jsonify({"ok": True}))
-    resp.set_cookie("user_id", user_id, httponly=True, samesite="Lax", secure=True)
+    resp.set_cookie("user_id", user_id, httponly=True, samesite="Lax", secure=False) #to see on localhost
     return resp
 
 @app.post("/api/visit-start")

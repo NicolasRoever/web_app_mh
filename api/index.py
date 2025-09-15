@@ -53,7 +53,7 @@ def api_login():
         supabase.table("session_login").insert({"user_id": user_id}).execute()
 
     resp = make_response(jsonify({"ok": True}))
-    resp.set_cookie("user_id", user_id, httponly=True, samesite="Lax", secure=True)
+    resp.set_cookie("user_id", user_id, httponly=True, samesite="Lax", secure=False) #to see on localhost
     return resp
 
 @app.post("/api/visit-start")

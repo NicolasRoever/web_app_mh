@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' "/Users/nicolasroever/Dropbox/Promotion/Sonia Mental Health Old/Code Web App/venv/bin/python" "$0" "$@"
-' '''
+#!/Users/nicolasroever/opt/anaconda3/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
