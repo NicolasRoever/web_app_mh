@@ -19,10 +19,10 @@ app = Flask(__name__, template_folder="templates", static_folder="static")
 def login_page():
     user_id = request.cookies.get("user_id")
     if user_id:
-        return redirect("/content.html")
+        return redirect("/content")
     return render_template("login.html")
 
-@app.get("/onboarding.html")
+@app.get("/onboarding")
 def onboarding_page():
     user_id = request.cookies.get("user_id")
     if not user_id:

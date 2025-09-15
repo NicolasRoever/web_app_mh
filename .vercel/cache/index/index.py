@@ -17,9 +17,12 @@ app = Flask(__name__)
 
 @app.get("/")
 def login_page():
+    user_id = request.cookies.get("user_id")
+    if user_id:
+        return redirect("/onboarding")
     return render_template("login.html")
 
-@app.get("/onboarding.html")
+@app.get("/onboarding")
 def onboarding_page():
     user_id = request.cookies.get("user_id")
     if not user_id:
