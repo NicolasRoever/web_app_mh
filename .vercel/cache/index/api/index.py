@@ -22,7 +22,7 @@ def login_page():
         return redirect("/content")
     return render_template("login.html")
 
-@app.get("/onboarding.html")
+@app.get("/onboarding")
 def onboarding_page():
     user_id = request.cookies.get("user_id")
     if not user_id:
