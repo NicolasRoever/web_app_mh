@@ -30,6 +30,7 @@
       <input id="user_id" placeholder="Enter your Prolific ID" autocomplete="off" required>
       <button type="submit">Continue</button>
     </form>
+    <div id="error-message" style="display:none; color: #b00020; text-align:center; margin-bottom:1em;"></div>
   </div>
 </div>
 <script>
@@ -40,8 +41,27 @@ if ('serviceWorker' in navigator) {
 document.getElementById('login-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   const userId = document.getElementById('user_id').value.trim();
-  if (!userId) return;
+  const errorEl = document.getElementById('error-message');
+
+   // Clear any previous error
+  errorEl.style.display = 'none';
+  errorEl.textContent = '';
+
+
+  if (!userId) {
+    errorEl.textContent = 'Please enter your Prolific ID.';
+    errorEl.style.display = 'block';
+    return;
+  }
+
+  if (userId.length !== 24) {
+    errorEl.textContent = 'Your input is invalid. A Prolific ID must be exactly 24 characters.';
+    errorEl.style.display = 'block';
+    return;
+  }
+
   localStorage.setItem('user_id', userId);
+
   const res = await fetch('/api/login', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
