@@ -1,6 +1,6 @@
 {
-  "name": "Minimal PWA",
-  "short_name": "PWA",
+  "name": "Mental Health Guide",
+  "short_name": "Mental Health ",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
