@@ -212,9 +212,21 @@
   </main>
 
 
-
+<!-- Inject user_id from Flask into a global bootstrap variable -->
 <script>
-const userId = localStorage.getItem('user_id');
+  window.__BOOTSTRAP__ = {{ {'user_id': user_id} | tojson }};
+</script>
+<script type="module">
+// Try localStorage first
+let userId = localStorage.getItem("user_id");
+
+// Fallback to Flask-injected bootstrap variable
+if (!userId && window.__BOOTSTRAP__?.user_id) {
+  userId = window.__BOOTSTRAP__.user_id;
+  // Optionally persist it in localStorage for next time
+  localStorage.setItem("user_id", userId);
+}
+
 if (!userId) {
   window.location.href = '/';
 }
