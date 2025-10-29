@@ -25,9 +25,9 @@
     </figure>
 
     
-    <p>Please enter your Prolific ID to continue.</p>
+    <p>Please enter your Trial Participant ID to continue.</p>
     <form id="login-form">
-      <input id="user_id" placeholder="Enter your Prolific ID" autocomplete="off" required>
+      <input id="user_id" placeholder="Enter your Trial Participant ID" autocomplete="off" required>
       <button type="submit">Continue</button>
     </form>
     <div id="error-message" style="display:none; color: #b00020; text-align:center; margin-bottom:1em;"></div>
@@ -49,24 +49,36 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
 
 
   if (!userId) {
-    errorEl.textContent = 'Please enter your Prolific ID.';
+    errorEl.textContent = 'Please enter your Trial Participant ID.';
     errorEl.style.display = 'block';
     return;
   }
 
-  if (userId.length !== 24) {
-    errorEl.textContent = 'Your input is invalid. A Prolific ID must be exactly 24 characters.';
+  // Validate format: 4 alphanumeric chars, hyphen, 4 alphanumeric chars (e.g. AB12-CD34)
+  const idPattern = /^[A-Za-z0-9]{4}-[A-Za-z0-9]{4}$/;
+  if (!idPattern.test(userId)) {
+    errorEl.textContent = "Your input is invalid. ID must be 4 letters/digits, a hyphen, then 4 letters/digits (e.g. AB12-CD34).";
     errorEl.style.display = 'block';
     return;
   }
 
   localStorage.setItem('user_id', userId);
 
+  //Call to web app database
   const res = await fetch('/api/login', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({ user_id: userId })
   });
+    // External registration call central database
+    await fetch('https://core-api-11932-110cf291-x7iy5esr.onporter.run/api/participant/register-signup', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        participant_code: userId,
+        research_arm: 'webapp'
+      })
+    });
   if (res.ok) {
     window.location.href = '/onboarding';
   }
