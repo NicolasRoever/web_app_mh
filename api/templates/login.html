@@ -70,15 +70,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({ user_id: userId })
   });
-    // External registration call central database
-    await fetch('https://core-api-11932-110cf291-x7iy5esr.onporter.run/api/participant/register-signup', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        participant_code: userId,
-        research_arm: 'webapp'
-      })
-    });
+    
   if (res.ok) {
     window.location.href = '/onboarding';
   }
