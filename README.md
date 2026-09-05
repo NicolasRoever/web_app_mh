@@ -1,10 +1,19 @@
 # Stress-management webpage for trial participants
 
-This project contains a small website built for trial participants to read a guide called **“Managing Stress and Supporting Your Mental Health.”** Everyone sees the same guide. Its subtitle says “Summarized by AI,” and its footer credits publicly available WHO mental health resources and illustrations by Humanities Studio.
+This project contains the website used to provide **the control group's reading materials** in the Sonia research papers listed below. Participants in the control group received web-based information about mental health, while participants in the treatment group received access to Sonia, a voice-based AI emotional support companion.
+
+The website shows a fixed guide called **“Managing Stress and Supporting Your Mental Health.”** Everyone using this website sees the same guide. Its subtitle says “Summarized by AI,” and its footer credits publicly available WHO mental health resources and illustrations by Humanities Studio.
 
 **[Read the exact webpage content, with its illustrations →](docs/webpage-content.md)**
 
 No login, installation, or coding knowledge is needed to read that copy. On GitHub, click the link above; if you see Markdown formatting symbols, select **Preview**. The words, punctuation, section order, and illustrations come directly from the webpage file. Only layout and extra whitespace differ.
+
+## Related research papers
+
+- **Short-term Evaluation of a Voice-Based Generative AI Emotional Support Companion: A Randomized Controlled Trial** — Nicolas Roever, with Lukas Wolf, Valerie Forman-Hoffman, Patricia Areán, and Bennet Feld. Evaluates Sonia against passive web-based psychoeducation based on WHO materials, with anxiety at two weeks as the primary outcome.
+- **Therapy Without the Therapist? Experimental Evidence on Automating a Relational Service** — Nicolas Roever, with Bennet Feld. Examines AI-delivered cognitive behavioral therapy, including mental health outcomes at four weeks, demand for human therapy, and social connection.
+
+See [Nicolas Roever's research page](https://www.nicolasroever.com/research) for more information about the papers.
 
 ## What participants saw
 
